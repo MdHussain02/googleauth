@@ -30,10 +30,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-black text-white">
-      <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full flex flex-col items-center space-y-6">
+    <div className="flex flex-col items-center justify-center h-screen bg-amber-600 text-white">
+      <div className="bg-amber-200 p-8 rounded-xl shadow-xl max-w-md w-full flex flex-col items-center space-y-6">
         <h1 className="text-4xl font-extrabold text-gray-800">Welcome!</h1>
-        <p className="text-lg text-gray-600">Sign in with Google to continue</p>
+        <p className="text-lg text-gray-900">Sign in with Google to continue</p>
         
         <GoogleLogin
           onSuccess={handleGoogleLoginSuccess}
@@ -43,7 +43,7 @@ const Login = () => {
           theme="filled_blue"
         />
         
-        <p className="text-sm text-gray-500 mt-4">By signing in, you agree to our Terms and Privacy Policy.</p>
+        <p className="text-sm text-gray-900 mt-4">By signing in, you agree to our Terms and Privacy Policy.</p>
       </div>
     </div>
   );
