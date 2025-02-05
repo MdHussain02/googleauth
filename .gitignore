@@ -5,7 +5,7 @@
 .env.production
 .env.test
 
-/node_modules
+node_modules
 
 # Ignore build outputs
 dist/
