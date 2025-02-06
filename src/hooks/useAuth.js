@@ -11,6 +11,7 @@ const useAuth = () => {
     setLoading(true);
     try {
       const decoded = jwtDecode(credentialResponse.credential);
+      console.log(decoded);
       setUser({
         name: decoded.name,
         email: decoded.email,

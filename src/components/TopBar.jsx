@@ -5,6 +5,8 @@ import logoImage from '../assets/logo.png'
 const TopBar = ({ user, onLogout }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
+  // console.log(user.picture); 
+
   return (
     <div className="flex items-center justify-between bg-amber-900 p-4 text-white relative">
       <div className="text-lg font-semibold flex items-center">
@@ -23,9 +25,10 @@ const TopBar = ({ user, onLogout }) => {
         <p className="text-sm">{user?.name}</p>
         <img
           className="w-8 h-8 rounded-full border-2 border-white shadow-lg cursor-pointer"
-          src={user?.picture || "https://via.placeholder.com/150"} // Fallback image
-          alt="Profile"
+          src={user?.picture || "https://via.placeholder.com/150"}
+          alt="Profile Picture of User" 
           onClick={() => setIsPopupVisible(!isPopupVisible)}
+          
         />
       </div>
       {isPopupVisible && (
