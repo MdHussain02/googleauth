@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { LayoutDashboard, Users, Package, ShoppingCart, Settings } from "lucide-react";
 
@@ -11,16 +11,7 @@ const selectors = [
 ];
 
 const SideBar = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 1024;
 
   return (
     <>
