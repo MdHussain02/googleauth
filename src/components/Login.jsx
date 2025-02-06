@@ -27,7 +27,7 @@ const Login = () => {
           </div>
         ) : (
           <>
-            <p className="text-lg text-gray-900">Sign in with </p>
+            <p className="text-lg text-gray-900">Sign in with Google or Facebook </p>
             <div className={!isChecked ? "opacity-50 pointer-events-none" : ""}>
               <GoogleLogin
                 onSuccess={handleGoogleLoginSuccess}
