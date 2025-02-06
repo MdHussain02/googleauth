@@ -7,7 +7,8 @@ import { FaFacebook } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
 
 const Login = () => {
-  const { loading, handleGoogleLoginSuccess, handleFacebookLoginSuccess } = useAuth();
+  const { loading, handleGoogleLoginSuccess, handleFacebookLoginSuccess } =
+    useAuth();
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-amber-900 text-white">
@@ -18,14 +19,16 @@ const Login = () => {
           alt="Fox and Cat Logo"
           className="w-48 h-48 object-contain hover:scale-105 transition-transform duration-300"
         />
-        
+
         {loading ? (
           <div className="flex items-center justify-center">
             <ImSpinner8 className="animate-spin text-4xl text-blue-500" />
           </div>
         ) : (
           <>
-            <p className="text-lg text-gray-900">Sign in with Google to continue</p>
+            <p className="text-lg text-gray-900">
+              Sign in with Google to continue
+            </p>
             <GoogleLogin
               onSuccess={handleGoogleLoginSuccess}
               onError={() => console.log("Login Failed")}
@@ -43,8 +46,17 @@ const Login = () => {
           </>
         )}
 
-        <p className="text-sm text-gray-900 mt-4">
-          By signing in, you agree to our Terms and Privacy Policy.
+        <p className="mt-4 text-sm text-gray-600 text-center">
+          By signing in, you agree to our
+          <a
+            href="https://www.termsfeed.com/live/a4beae3d-81d4-427b-a8c4-d3c13117797f"
+            className="text-blue-600 hover:underline hover:text-blue-700 font-medium transition duration-200 ml-1"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </a>
+          .
         </p>
       </div>
     </div>
