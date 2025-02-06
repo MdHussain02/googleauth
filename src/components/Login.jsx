@@ -27,7 +27,7 @@ const Login = () => {
           </div>
         ) : (
           <>
-            <p className="text-lg text-gray-900">Sign in with Google to continue</p>
+            <p className="text-lg text-gray-900">Sign in with </p>
             <div className={!isChecked ? "opacity-50 pointer-events-none" : ""}>
               <GoogleLogin
                 onSuccess={handleGoogleLoginSuccess}
