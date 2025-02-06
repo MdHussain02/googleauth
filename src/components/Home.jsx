@@ -10,8 +10,6 @@ const Home = () => {
   return (
     <div className="h-screen bg-gradient-to-r">
       <TopBar user={user} onLogout={() => setUser(null)} />
-    
-
     <LogoContainer/>
     </div>
 

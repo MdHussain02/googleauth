@@ -6,7 +6,7 @@ const TopBar = ({ user, onLogout }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   return (
-    <div className="flex items-center justify-between bg-amber-600 p-4 text-white relative">
+    <div className="flex items-center justify-between bg-amber-900 p-4 text-white relative">
       <div className="text-lg font-semibold flex items-center">
         <div className="flex items-center justify-center w-10 h-10 bg-white rounded-full">
           <img
@@ -28,8 +28,6 @@ const TopBar = ({ user, onLogout }) => {
           onClick={() => setIsPopupVisible(!isPopupVisible)}
         />
       </div>
-
-      {/* User Popup */}
       {isPopupVisible && (
         <UserPopup
           user={user}
