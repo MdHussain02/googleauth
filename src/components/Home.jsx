@@ -1,20 +1,21 @@
 import React from "react";
 import { useRecoilState } from "recoil";
-import { userState } from "../recoil/userState";
+import { userPersistenceState } from "../recoil/userState";
 import TopBar from "./TopBar";
+import LogoContainer from "./LogoContainer";
 
 const Home = () => {
-  const [user, setUser] = useRecoilState(userState);
-
-  const handleLogout = () => {
-    setUser(null); // Clears user from Recoil state
-    localStorage.removeItem("user"); // Remove user from localStorage
-  };
+  const [user, setUser] = useRecoilState(userPersistenceState);
 
   return (
     <div className="h-screen bg-gradient-to-r">
-      <TopBar user={user} onLogout={handleLogout} />
+      <TopBar user={user} onLogout={() => setUser(null)} />
+    
+
+    <LogoContainer/>
     </div>
+
+
   );
 };
 
