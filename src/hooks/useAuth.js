@@ -11,7 +11,7 @@ const useAuth = () => {
     setLoading(true);
     try {
       const decoded = jwtDecode(credentialResponse.credential);
-      console.log(decoded);
+      // console.log(decoded);
       setUser({
         name: decoded.name,
         email: decoded.email,
@@ -26,7 +26,7 @@ const useAuth = () => {
 
   const handleFacebookLoginSuccess = (response) => {
     setLoading(true);
-    console.log(response);
+    // console.log(response);
     setUser({
       name: response.data.name,
       email: response.data.email,
