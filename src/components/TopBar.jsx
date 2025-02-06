@@ -3,7 +3,6 @@ import UserPopup from "./UserPopup";
 import logoImage from '../assets/logo.png'
 import { useRecoilState } from "recoil";
 import { userPersistenceState } from "../recoil/userState";
-
 const TopBar = () => {
   const [user] = useRecoilState(userPersistenceState);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
