@@ -4,6 +4,10 @@ import { useRecoilState } from "recoil";
 import { userPersistenceState } from "./recoil/userState";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Users from "./components/Users";
+import Products from "./components/Products";
+import Orders from "./components/Orders";
+import Settings from "./components/Settings";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
@@ -14,14 +18,22 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
-        <Route
-          path="/home"
+
+        {/* Home layout with nested routes */}
+        <Route 
+          path="/home" 
           element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<h1 className="text-2xl font-semibold">Welcome to Dashboard</h1>} />
+          <Route path="users" element={<Users />} />
+          <Route path="products" element={<Products />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
     </Router>
   );

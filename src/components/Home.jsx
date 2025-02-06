@@ -1,11 +1,24 @@
 import React from "react";
 import TopBar from "./TopBar";
-import LogoContainer from "./LogoContainer";
+import SideBar from "./SideBar";
+import { Outlet } from "react-router-dom";
+
 const Home = () => {
   return (
-    <div className="h-screen bg-gradient-to-r">
+    <div className="h-screen flex flex-col">
+      {/* TopBar spans the full width */}
       <TopBar />
-    <LogoContainer/>
+
+      {/* Sidebar & Main Content Wrapper */}
+      <div className="flex flex-1">
+        {/* Sidebar takes only needed width */}
+        <SideBar />
+
+        {/* Main Content Area */}
+        <div className="flex-1 p-6 bg-gray-100 overflow-auto">
+          <Outlet /> {/* Renders the selected route's content */}
+        </div>
+      </div>
     </div>
   );
 };
