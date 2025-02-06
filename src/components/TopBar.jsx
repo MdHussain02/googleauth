@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import UserPopup from "./UserPopup";
 import logoImage from '../assets/logo.png'
+import { useRecoilState } from "recoil";
+import { userPersistenceState } from "../recoil/userState";
 
-const TopBar = ({ user, onLogout }) => {
+const TopBar = () => {
+  const [user] = useRecoilState(userPersistenceState);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-
-  // console.log(user.picture); 
 
   return (
     <div className="flex items-center justify-between bg-amber-900 p-4 text-white relative">
@@ -35,7 +36,6 @@ const TopBar = ({ user, onLogout }) => {
         <UserPopup
           user={user}
           onClose={() => setIsPopupVisible(false)}
-          onLogout={onLogout}
         />
       )}
     </div>

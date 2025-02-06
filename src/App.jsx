@@ -8,7 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 
 function App() {
-  const [user, setUser] = useRecoilState(userPersistenceState);
+  const [user] = useRecoilState(userPersistenceState);
 
   return (
     <Router>
