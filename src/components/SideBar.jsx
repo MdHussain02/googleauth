@@ -26,7 +26,7 @@ const SideBar = () => {
             <NavLink
               key={selector.id}
               to={selector.link}
-              end={selector.exact} // This ensures "/home" is only active when exactly matched
+              end={selector.exact} 
               className={({ isActive }) =>
                 `flex items-center px-3 py-2.5 mb-1 rounded-lg transition-all duration-200 ease-in-out
                 ${

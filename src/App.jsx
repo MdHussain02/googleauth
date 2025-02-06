@@ -10,6 +10,7 @@ import Orders from "./components/Orders";
 import Settings from "./components/Settings";
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
+import LogoContainer from "./components/LogoContainer";
 
 function App() {
   const [user] = useRecoilState(userPersistenceState);
@@ -28,7 +29,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<h1 className="text-2xl font-semibold">Welcome to Dashboard</h1>} />
+          <Route index element={<LogoContainer/>} />
           <Route path="users" element={<Users />} />
           <Route path="products" element={<Products />} />
           <Route path="orders" element={<Orders />} />
