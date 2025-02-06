@@ -13,7 +13,6 @@ const selectors = [
 const SideBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
-  // Detect window resize to switch between mobile and desktop layout
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -48,9 +47,9 @@ const SideBar = () => {
         </div>
       )}
 
-      {/* Mobile Bottom Navigation */}
+      {/* Mobile Floating Dock */}
       {isMobile && (
-        <div className="fixed bottom-0 left-0 w-full bg-amber-900 text-slate-300 flex justify-around items-center py-3 shadow-lg">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] bg-amber-900/90 text-slate-300 flex justify-around items-center py-3 shadow-lg rounded-2xl backdrop-blur-md">
           {selectors.map(({ id, icon: Icon, link, exact }) => (
             <NavLink
               key={id}
