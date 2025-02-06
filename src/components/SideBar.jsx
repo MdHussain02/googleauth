@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { LayoutDashboard, Users, Package, ShoppingCart, Settings, Menu } from "lucide-react";
+import { LayoutDashboard, Users, Package, ShoppingCart, Settings } from "lucide-react";
 
 const selectors = [
   { id: 1, name: "Dashboard", icon: LayoutDashboard, link: "/home", exact: true },
@@ -11,42 +11,62 @@ const selectors = [
 ];
 
 const SideBar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  // Detect window resize to switch between mobile and desktop layout
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className={`${isExpanded ? 'w-64' : 'w-16'} min-h-screen bg-amber-900 text-slate-300 py-6 flex flex-col shadow-xl transition-all duration-300`}>
-      {/* Toggle Button */}
-      <button 
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="lg:hidden mx-auto mb-6 p-2 hover:bg-amber-800 rounded-lg"
-      >
-        <Menu className="w-5 h-5" />
-      </button>
+    <>
+      {/* Desktop Sidebar */}
+      {!isMobile && (
+        <div className="w-16 lg:w-64 bg-amber-900 text-slate-300 py-6 px-2 rounded-2xl shadow-xl transition-all duration-300 m-4 min-h-[90vh] flex flex-col">
+          <nav className="flex-1 px-2">
+            {selectors.map(({ id, icon: Icon, link, exact }) => (
+              <NavLink
+                key={id}
+                to={link}
+                end={exact}
+                className={({ isActive }) =>
+                  `flex items-center px-3 py-2.5 mb-1 rounded-lg transition-all duration-200 ease-in-out
+                  ${isActive ? "bg-amber-200 text-black shadow-md" : "text-slate-400 hover:bg-amber-400 hover:text-white"}
+                  lg:justify-start justify-center`
+                }
+              >
+                <Icon className="w-6 h-6" />
+                <span className="ml-3 font-medium hidden lg:inline">{id !== 1 ? link.replace("/home/", "") : "Dashboard"}</span>
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      )}
 
-      {/* Navigation Links */}
-      <nav className="flex-1 px-3">
-        {selectors.map((selector) => {
-          const Icon = selector.icon;
-          return (
+      {/* Mobile Bottom Navigation */}
+      {isMobile && (
+        <div className="fixed bottom-0 left-0 w-full bg-amber-900 text-slate-300 flex justify-around items-center py-3 shadow-lg">
+          {selectors.map(({ id, icon: Icon, link, exact }) => (
             <NavLink
-              key={selector.id}
-              to={selector.link}
-              end={selector.exact}
+              key={id}
+              to={link}
+              end={exact}
               className={({ isActive }) =>
-                `flex items-center px-3 py-2.5 mb-1 rounded-lg transition-all duration-200 ease-in-out
-                ${isActive
-                  ? "bg-amber-200 text-black shadow-md"
-                  : "text-slate-400 hover:bg-amber-400 hover:text-white"
-                } ${!isExpanded && 'justify-center px-2'}`
+                `flex flex-col items-center justify-center transition-all duration-200 ease-in-out
+                ${isActive ? "text-amber-200" : "text-slate-400 hover:text-white"}`
               }
             >
-              <Icon className="w-5 h-5" />
-              {isExpanded && <span className="ml-3 font-medium">{selector.name}</span>}
+              <Icon className="w-6 h-6" />
             </NavLink>
-          );
-        })}
-      </nav>
-    </div>
+          ))}
+        </div>
+      )}
+    </>
   );
 };
 
